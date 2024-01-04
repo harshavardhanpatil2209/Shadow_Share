@@ -1,0 +1,44 @@
+{% extends 'food/base.html' %}
+
+
+{% block body %}
+
+<div class="container" style="margin-top: 70px;">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">  
+            <div class="card">
+                <div class="card-header text-bg-dark">
+                    <div class="card-title text-center">
+                        <h3>Post Details</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- {{ form.as_p }} -->
+                            {%for field in form%}
+                            <div class="form-group text-center" style="margin: 15px;">
+                                <b>{{field.label.title}}<b>   
+                                <br>
+                                <span>{{field}}</span>
+                            </div>
+                            {%endfor%}
+                            <!-- <br><br><br> -->
+                            <article class="text-center" style="color: black; margin-bottom: 30px; margin-top: 30px;">Fun Fact: You can also upload GIFs while selecting the image...</article>
+                        <div class="text-center">
+                            <button class="btn btn-success" type="submit">Save</button> 
+                        </div>
+                    </form>
+                    
+                        
+                        
+                  
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

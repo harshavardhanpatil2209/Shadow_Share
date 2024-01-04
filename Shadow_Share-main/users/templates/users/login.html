@@ -1,0 +1,38 @@
+{% extends "food/base.html" %}
+{% block body %}
+
+<div class="container" style="margin-top: 50px; margin-bottom: 100px;">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">  
+            <div class="card">
+                <div class="card-header text-bg-dark">
+                    <div class="card-title text-center">
+                        <h3>Login</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <!-- {{form}} -->
+                        {% for field in form %}
+                        <div class="form-group text-center " style="margin: 10px;">
+                           <h6>{{field.label}} </h6> 
+
+                            {{field}}
+                            
+                        </div>
+                        {% endfor %}
+                        <div class="text-center">
+                            <button class="btn btn-info" type="submit">Login</button> 
+                        </div>
+                        
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

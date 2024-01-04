@@ -1,0 +1,27 @@
+{% extends 'food/base.html' %}
+{% block body %}
+<form method="POST">
+    {% csrf_token %}
+    <div class="container text-light" style="margin-top: 50px;">
+        <h2 class="text-center mb-4" style="color: crimson;">Confirmation Page</h2>
+        <h4 class="text-center">Are you sure you want to delete this post: "{{item.item_name}}"?</>
+        <div class="d-flex justify-content-center mt-5">
+          <button class="btn btn-success mr-3" type="submit" style="margin-right: 10px;">Yes</button>
+          <a href="{% url 'food:index' %}" class="btn btn-danger">Cancel</a>
+          <!-- <button class="btn btn-danger" onclick="redirectToAnotherPage()">No</button> -->
+        </div>
+      </div>
+      
+    <!-- <h1>Are you sure you want to delete "{{item.item_name}}"?</h1>
+    <button type="submit">Confirm</button>
+    <a href="{% url 'food:index' %}">Cancel</a> -->
+</form>
+
+<script>
+    function redirectToAnotherPage() {
+      // Replace 'url' with the actual URL of the page you want to redirect to
+      window.location.href = "{% url 'food:index' %}";
+    }
+  </script>
+
+  {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "food/base.html" %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 text-center">
+        <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle mb-3" alt="Profile Image">
+        {% comment %} <h3 class="mb-0">John Doe</h3> {% endcomment %}
+       <div class="userdet" style="border: solid gray 4px; border-radius: 8px; margin: 15px;">
+        <p class="text-muted"><h2 style="color :aliceblue"><p style="color:blue">Username:</p> {{ user.username }}</h2></p>
+       </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}  

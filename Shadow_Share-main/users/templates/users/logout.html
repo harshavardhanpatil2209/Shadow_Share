@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visit Again !!</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #343a40;
+            color: #fff;
+        }
+        .logout-message {
+            margin-top: 200px;
+            text-align: center;
+        }
+        .logout-message h1 {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .logout-timer {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="logout-message">
+                    <h1>You have been logged out!!</h1>
+                    <p>Redirecting to home page in <span id="timer" class="logout-timer">4</span> seconds...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include Bootstrap JS -->
+    <script>
+        var countdown = 4; // Countdown duration in seconds
+        var timerElement = document.getElementById('timer');
+
+        function countdownTimer() {
+            if (countdown === 0) {
+                window.location.href = "{% url 'food:index' %}";
+            } else {
+                timerElement.innerHTML = countdown;
+                countdown--;
+                setTimeout(countdownTimer, 1000); // Run every 1 second (1000 milliseconds)
+            }
+        }
+
+        setTimeout(countdownTimer, 1000); // Start the countdown timer
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

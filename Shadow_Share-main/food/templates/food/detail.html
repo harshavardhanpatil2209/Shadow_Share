@@ -1,0 +1,23 @@
+{% extends 'food/base.html' %}
+
+{% block body %}
+
+<div class="container" style="margin-top: 40px; margin-bottom: 40px;">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="{{item.image.url}}" class="img-fluid" alt="Item Image" style="border: solid snow 4px; border-radius: 10px;">
+      </div>
+      <div class="col-md-8" style="background-color: black; color: rgb(255, 255, 255);">
+        <h2>{{object.item_name}}</h2>
+        <p>{{object.item_desc}}</p>
+        {% comment %} <p>Rating: {{object.item_price}} </p> {% endcomment %}
+        <p>Posted by: <b><span style="color: rgb(45, 66, 158);">@{{ object.user_name }}</span></b></p>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- <h1> {{item.item_name}} </h1>
+<h2> {{item.item_desc}} </h2>
+<h3> {{item.item_price}} </h3> -->
+{% endblock %}

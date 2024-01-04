@@ -1,0 +1,69 @@
+
+{% extends 'food/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>Food</title>
+</head>
+<body>
+
+   {% block body %}
+   {% if user.is_authenticated %}
+    <h1 class="offset-md-1" style="background-color: black; padding: 10px;margin: 50px; font-family: sans-serif; color: gray; font-weight: 900;text-align: center;">Feeds Forever...</h1>
+    {% else %}
+    <h2 class="offset-md-1" style="background-color: black; padding: 10px; margin: 50px; font-family: sans-serif; color: gray; font-weight: 900;text-align: center;"><span style="color: rgba(255, 0, 0, 0.692);">Login/Sign Up</span> now to unlock more features such as adding post!!</h2>
+    {% endif %}
+    {% for item in item_list %}
+    <div class="container" style="margin: 30px;">
+        <div class="row">
+          <div class="col-md-6 offset-md-4">
+            <div class="card card-small" style="border: solid rgba(15, 88, 82, 0.753) 3px;">
+              <img class="card-img-top custom-image" src="{{item.image.url}}" alt="Post Image" >
+              <div class="card-body bg-dark" style="color: aliceblue;">
+                <!-- <h5 class="card-title">Post Title</h5> -->
+                <h3>{{item.item_name}}</h3> 
+            <h5>{{item.item_desc}}</h5>
+            {% comment %} <h6>Rating: {{item.item_price}}</h6>    {% endcomment %}
+            <!-- <h6>AnoName- {{ item.user_name }}</h6> -->
+
+            {% if request.user == item.user_name %}
+            <h6 style="font-family: sans-serif;">Posted by <b><span style="color: rgb(45, 66, 158);">You</span></b></h6>
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-outline-info" style="margin-right: 5px;">View</a>
+            <a href="{% url 'food:update_item' item.id %}" class="btn btn-outline-primary " style="margin-right: 5px;">Update</a>
+            <a href="{% url 'food:delete_item' item.id %}" class="btn btn-outline-danger">Delete</a>
+            
+        {% else %}
+        <h6 style="font-family: sans-serif;">Posted by- <b><span style="color: rgb(45, 66, 158);">@{{ item.user_name }}</span></b></h6>
+            
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-outline-info">View</a>
+        {% endif %}
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    {% endfor %}
+   {% endblock %}
+
+   this below is old code
+   
+   {% for item in item_list %}
+   <ul>
+       <li>
+           <a href="{% url 'food:detail' item.id %}">{{item.id}} -- {{item.item_name}}</a>   
+           <!-- 'detail' was the name given to that path in urls.py -->
+           <!-- 'food' before detail defines the scope that here we are referring to the 'detail' url of food app even if there exists a url with same name in different app -->
+       </li>
+   </ul>
+   {% endfor %}
+   
+</body>
+</html>
+
+
