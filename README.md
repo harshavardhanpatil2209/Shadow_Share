@@ -1,5 +1,4 @@
 # ShadowShare
-Direct Link: http://ankitpatne.pythonanywhere.com/ 
 
 This is a dynamic Django-based project that allows users to securely post and edit images along with captivating captions while preserving their anonymity.
 
